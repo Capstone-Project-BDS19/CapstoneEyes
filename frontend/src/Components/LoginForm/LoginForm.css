@@ -1,0 +1,131 @@
+form {
+    display: block;
+    position: relative;
+    background-color: #9AA891;
+    
+  }
+  
+  form:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: 1;
+    /*background-image: linear-gradient(to bottom right, #FFCE00, #FE4880)*/
+    background-color: #000;
+  
+  }
+  
+  form .form-inner{
+    position: relative;
+    display:block;
+    background-color: #fff;
+    padding: 30px;
+    z-index: 2
+  }
+  
+  form .form-inner h2{
+    color:#000b;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+  
+  form .form-inner .form-group{
+    display: block;
+    color: #666;
+    width: 300px;
+    margin-bottom: 15px;
+  }
+
+  form .form-inner .form-group-pwd{
+    display: border-box;
+    color: #666;
+    width: 300px;
+    margin-bottom: 15px;
+    position: relative;
+    background-color: #e5e5e5;
+    border-radius: 8px
+
+  }
+
+  form .form-inner .form-group-pwd .input-pwd{
+    display: inline-block;
+    width: 90%;
+    padding: 10px 15px;
+    transition: 0.4s;
+    background-color: #e5e5e5;
+    border-radius: 8px;
+  }
+
+  .pwd-button{
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+  }
+  
+  form .form-inner .form-group-center{
+    display: block;
+    width: 300px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  form .form-inner .form-group .forgot-pwd{
+    text-align: right;
+  }
+  
+  .form-inner .form-group .forgot-pwd a{
+    text-decoration: none;
+    color: #43633b;
+  }
+
+  .form-inner .form-group-center a{
+      text-decoration: none;
+      color: #43633b;
+      font-weight: bolder;
+  }
+  
+  
+  form .form-inner .form-group input{
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #e5e5e5;
+    border-radius: 8px;
+    transition: 0.4s;
+  }
+  
+  form .form-inner .form-group input:focus{
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+  }
+  
+  form .form-inner input[type="submit"],
+    .welcome button {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #0e1908;
+    background-position: 0%;
+    transition: 0.4s;
+    color: #FFF;
+    font-weight: 700;
+    cursor: pointer;
+    width: fit-content;
+    font-size:18px ;
+    margin-top: 10px
+  ;
+  }
+  
+  form .form-inner input[type="submit"]:hover,
+  .welcome button:hover{
+    background-position: 100% 0%
+  }
+
+.error{
+  color: #ff291e
+}

@@ -23,7 +23,7 @@ export function SignUpScreen(){
                         password: details.password,
                     })
                     .then((res) => {
-                        history('/');
+                        history('/login');
                         console.log(res)
                         console.log(res.data)
                     })

@@ -1,16 +1,30 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 import "./LoginForm.css"
-import * as AiIcons from "react-icons/ai"
+import * as AiIcons from "react-icons/ai";
+import {useNavigate} from 'react-router-dom';
 
 
 function LoginForm({Login, error}){
-    const [details, setDetails] = useState({username: "", password: "", password:""});
+    const history = useNavigate();
+    const initialFormData = Object.freeze({
+        email: '',
+        password:'',
+    })
+
+    const [details, setDetails] = useState(initialFormData)
     const [passwordShown, setPasswordShown] = useState(false);
 
-    const submitHandler = e => {
-        e.preventDefault() //prevent re-render
+    const handleChange = e => {
+        setDetails({
+            ...details,
+            [e.target.name] : e.target.value.trim(),
+        })
+    }
 
+    const handleSubmit = e => {
+        e.preventDefault() //prevent re-render
+        console.log(details)
         Login(details);
     }
 
@@ -20,19 +34,19 @@ function LoginForm({Login, error}){
 
     
     return (
-        <form onSubmit = {submitHandler}>
+        <form>
             <div className = "form-inner">
                 <h2> Login to continue </h2>
                 <div className = "form-group">
-                    <input type="text" name= "username" id= "username" 
-                    onChange = {e => setDetails({...details, username: e.target.value})} 
+                    <input type="text" name= "email" id= "email" 
+                    onChange = {handleChange}
                     value = {details.name}
-                    placeholder = "Username/ Email"></input>
+                    placeholder = "Email"></input>
                 </div>
                 <div className = "form-group-pwd">
                     <input type= {passwordShown ? "text" : "password"} 
                     name= "password" id= "password"
-                    onChange = {e => setDetails({...details, password: e.target.value})}
+                    onChange = {handleChange}
                     value = {details.password}
                     placeholder = "Password"
                     className = "input-pwd"></input>
@@ -48,7 +62,8 @@ function LoginForm({Login, error}){
                 {(error != "") ? (<div className = "error">{error}</div>) :  ""}
                 </div>
                <div className = "form-group-center"> 
-                    <input type= "submit" value = "Login"/>
+                    <input type= "submit" value = "Login"
+                    onClick = {handleSubmit}/>
                 </div>
                 
                 <div className = "form-group-center">

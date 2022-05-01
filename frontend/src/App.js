@@ -1,5 +1,6 @@
 
 import React, {useState} from 'react';
+import { Home } from './Components/Home/Home';
 import {LogInScreen} from './Screens/loginScreen/loginScreen';
 import {SignUpScreen} from './Screens/signupScreen/signupScreen';
 import {NavBar} from './Components/NavBar/NavBar';
@@ -10,7 +11,8 @@ export default function App(){
       <Router>
         <NavBar/>
         <Routes>
-          <Route path = "/" caseSensitive={false} element = {<LogInScreen/>} />
+          <Route path = "/" caseSensitive={false} element= {<Home/>} />
+          <Route path = "/login" caseSensitive={false} element = {<LogInScreen/>} />
           <Route path = "/signup" caseSensitive={false} element = {<SignUpScreen/>} />
           {/* <Route path = "/aboutus" caseSensitive={false} element = {<AboutUs/>} />
           <Route path = "/contactus" caseSensitive={false} element = {<ContactUs/>} /> */}

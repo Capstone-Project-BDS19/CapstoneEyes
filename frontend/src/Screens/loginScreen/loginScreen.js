@@ -1,29 +1,36 @@
 
 import React, {useState} from 'react';
 import LoginForm from '../../Components/LoginForm/LoginForm';
+import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../axios'; 
 
 export function LogInScreen(){
-  const adminUser = {
-      username: "admin@admin.com",
-      password: "admin123"   
-  }
+  const history = useNavigate();
 
-  const [user, setUser] = useState({username: "", password:""})
+  const [user, setUser] = useState({email: "", password:""})
   const [error, setError] = useState("");
   
   const Login = details => {
       console.log(details);
 
-      if (details.username == adminUser.username && details.password == adminUser.password){
-        console.log("Logged in");
-        setUser({
-          username: details.username,
-          password: details.password
-        })
-      } else {
-        console.log("Incorrect credentials. Please try again!")
-        setError("Incorrect credentials. Please try again!")
-      }
+      axiosInstance
+            .post('token/', {
+                  email: details.email,
+                  password: details.password
+            })
+            .then((res) => {
+                  localStorage.setItem('access_token', res.data.access);
+                  localStorage.setItem('refresh_token', res.data.refresh);
+                  axiosInstance.defaults.headers['Authorization'] =
+                      'JWT ' + localStorage.getItem('access_token');
+                  history('/');
+                  console.log('Logged in');
+            })
+     
+      // else {
+      //   console.log("Incorrect credentials. Please try again!")
+      //   setError("Incorrect credentials. Please try again!")
+      // }
   }
 
   const Logout = () => {

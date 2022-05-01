@@ -24,7 +24,7 @@ export function NavBar() {
                         <span className = "prj-title"> Eye's strain and drowsiness detection</span>
                     </div>
                     <div className = "login-signup">
-                        <Link to ="/" className = "login"> Login </Link>
+                        <Link to ="/login" className = "login"> Login </Link>
                         <Link to ="/signup" className = "signup"> Signup</Link>
                     </div>
                 </div>

@@ -1,9 +1,8 @@
-import React, { Component } from "react";
- 
-class Home extends Component {
-  render() {
-    return (
-      <div>
+import React from 'react'
+
+export function Home() {
+  return (
+    <div>
         <h2>HELLO</h2>
         <p>Cras facilisis urna ornare ex volutpat, et
         convallis erat elementum. Ut aliquam, ipsum vitae
@@ -13,9 +12,7 @@ class Home extends Component {
         dis parturient montes, nascetur ridiculus mus.</p>
  
         <p>Duis a turpis sed lacus dapibus elementum sed eu lectus.</p>
-      </div>
-    );
-  }
+    </div>
+  )
 }
  
-export default Home;

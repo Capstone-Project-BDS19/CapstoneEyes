@@ -1,0 +1,16 @@
+pip install coverage
+
+- coverage run --omit='*/venv/*' manage.py test: do not want to test
+the 'venv' folder
+
+
+What test need to be done?
+
+TEST MODEL
+- coverage html : create a new folder htmlcov
+- Open the file named index.html in browser
+- It will shows which tests need to be run in which parts
+- Write test case in the tests.py in the capstone folder
+
+TEST API
+

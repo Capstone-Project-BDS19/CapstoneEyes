@@ -1,0 +1,10 @@
+py manage.py makemigrations --dry-run --verbosity 3
+py manage.py runserver
+py manage.py createsuperuser
+pip install coverage
+coverage run --omit='*/venv/*' manage.py test
+pip install djangorestframework - allow to convert a django application
+to a set of restful API
+pip install django-cors-headers
+pip install djangorestframework-simplejwt
+

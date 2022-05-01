@@ -1,14 +1,12 @@
 
 import React, {useState} from 'react';
 import SignupForm from '../../Components/Signupform/SignupForm';
-
+import {useNavigate} from 'react-router-dom'
+import axiosInstance from '../../axios';
 
 export function SignUpScreen(){
-  const adminUser = {
-      email: "admin@admin.com",
-      password: "admin123"   
-  }
 
+  const history = useNavigate();
   const [user, setUser] = useState({username: "", email: "", password: ""});
   const [repeatPassword, setRepeatPassword] = useState("");
   const [error, setError] = useState("");
@@ -17,14 +15,23 @@ export function SignUpScreen(){
       console.log(details);
 
       if (details.password == repeatPassword){
-          console.log("Matched password")
-        //   console.log(details.password);
-        //   console.log(repeatPassword)
-          setUser({
-              username: details.username,
-              email: details.email,
-              password: details.password
-          })
+          console.log("Matched password");
+          axiosInstance
+                    .post('user/create/', {
+                        email: details.email,
+                        user_name: details.username,
+                        password: details.password,
+                    })
+                    .then((res) => {
+                        history('/');
+                        console.log(res)
+                        console.log(res.data)
+                    })
+        //   setUser({
+        //       username: details.username,
+        //       email: details.email,
+        //       password: details.password
+        //   })
       } else {
           console.log("unmatched password")
           setError("Unmatched password. Please try again!")

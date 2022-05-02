@@ -23,4 +23,5 @@ class CustomUserCreate(APIView):
         #         return Response(-1)
         #     else: 
         #         return Response("None")
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response(serializer.error_messages, status=status.HTTP_400_BAD_REQUEST)

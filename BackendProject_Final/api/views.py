@@ -18,6 +18,7 @@ from scipy.stats import linregress #calculate linear regression slope for measur
 import time #used to calculate duration of model operating to calculate blink rate
 from statistics import *
 import numpy as np
+import datetime
 
 # Create your views here.
 
@@ -34,7 +35,7 @@ class SignUpView(generic.CreateView):
 def getData(request):
     item = blnk.objects.all()
     serializer = blinkSerializer(item, many = True)
-    return HttpResponse(serializer.data)
+    return Response(serializer.data)
 
 # demo adding data in JSON format to data model
 @api_view(['POST'])
@@ -101,8 +102,8 @@ class VideoCamera(object):
         self.tick = 60 #collect data every 60s (1 minute)
 
         # Data capture-related
-        self.last_agg_blink_cnt = self.last_agg_strain_cnt = self.last_agg_drowsy_cnt = 0
-        self.blink_cnt_log = self.strain_cnt_log = self.drowsy_cnt_log = 0
+        self.last_agg_strain_cnt = self.last_agg_drowsy_cnt = 0
+        self.strain_cnt_log = self.drowsy_cnt_log = 0
 
         threading.Thread(target=self.update, args=()).start()
 
@@ -188,22 +189,18 @@ class VideoCamera(object):
             # NOTE TO SELF: reset restnotif after user confirmation
 
             # data logging
-            self.blink_cnt_log = self.TOTAL - self.last_agg_blink_cnt
             self.strain_cnt_log = self.strain_cnt - self.last_agg_strain_cnt
             self.drowsy_cnt_log = self.drowsy_cnt - self.last_agg_drowsy_cnt
             if int(duration) == self.tick:
                 self.tick += 60
                 serializer = blinkSerializer(data = {\
                     "user":Home.current_user,\
-                    "blink_cnt":self.blink_cnt_log,\
                     "blink_rate": br, \
                     "drowsy_cnt":int(self.drowsy_cnt_log/30),\
                     "strain_cnt":int(self.strain_cnt_log/30)})
 
                 if serializer.is_valid():
                     serializer.save()
-
-            self.last_agg_blink_count = self.TOTAL
             self.last_agg_strain_cnt = self.strain_cnt
             self.Last_agg_drowsy_cnt = self.drowsy_cnt
   
@@ -235,29 +232,48 @@ def gen(camera):
 
 # Statistics
 def stats(request):
-    #specific data retrieveal for logged-in user
+    #specific data retrieveal for logged-in user & date
     data = blnk.objects.filter(user=request.user.username)
+    curdate = datetime.date.today()
 
     #get data for each column as a list
-    blink_cnt = list(data.values_list('blink_cnt', flat = True))
     blink_rate = list(data.values_list('blink_rate', flat = True))
     strain_cnt = list(data.values_list('strain_cnt', flat = True))
     drowsy_cnt = list(data.values_list('drowsy_cnt', flat = True))
-    time = list(data.values_list('time', flat = True))
+    time = list(data.values_list('time', flat = True).filter(date=curdate))
     # calculating statistics to display to user
         #1. mean
-    mean_blink_cnt = np.mean(blink_cnt)
     mean_strain_cnt = np.mean(strain_cnt)
     mean_drowsy_cnt = np.mean(drowsy_cnt)
 
         #2.generating aggregated list for visualization
-    graph_blink_cnt = np.cumsum(blink_cnt)
-    graph_strain_cnt = np.cumsum(strain_cnt)
-    graph_drowsy_cnt = np.cumsum(drowsy_cnt)
+    agg_blink_rate = np.cumsum(blink_rate)
+    agg_strain_cnt = np.cumsum(strain_cnt)
+    agg_drowsy_cnt = np.cumsum(drowsy_cnt)
     
 
         #3. slope (can be understood by the user as how quickly is that measurement increasing)
     """ slope_blink_cnt = linregress(x = time, y = graph_blink_cnt)[0] """
 
-    result = 'By-the-minute blink count: {} \n Aggregated blink count: {}'.format(blink_cnt, graph_blink_cnt)
+    strain_dur = 0
+    for i in range(len(strain_cnt)):
+        if strain_cnt[i] >= 30:
+            strain_dur += 1
+    
+    drowsy_dur = 0
+    for i in range(len(drowsy_cnt)):
+        if drowsy_cnt[i] >= 30:
+            drowsy_dur += 1
+
+    date = datetime.date(1, 1, 1)
+    datetime1 = datetime.datetime.combine(date, time[0])
+    datetime2 = datetime.datetime.combine(date, time[-1])
+
+    used_dur = datetime2 - datetime1
+    result = 'Latest blink rate: {}\
+         \n Aggregated blink rate: {}\
+         \n Strain duration: {} minutes\
+         \n Drowsy duration: {} minutes\
+         \n Used duration: {}'\
+         .format(blink_rate[-1], agg_blink_rate, strain_dur, drowsy_dur, used_dur)
     return HttpResponse(result)

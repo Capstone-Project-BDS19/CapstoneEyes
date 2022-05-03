@@ -8,7 +8,6 @@ class blnk(models.Model):
     user = models.CharField(max_length=30)
     date = models.DateField(auto_now=True)
     time = models.TimeField(auto_now=True)
-    blink_cnt = models.IntegerField()
     blink_rate = models.IntegerField()
     strain_cnt = models.IntegerField()
     drowsy_cnt = models.IntegerField()

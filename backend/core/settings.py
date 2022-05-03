@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'capstone',
-    'capstone_api',
     'rest_framework',
+    'capstone',
+    'capstone_api',  
     'corsheaders',
     'users'
 ]

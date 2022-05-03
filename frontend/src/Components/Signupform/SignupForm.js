@@ -6,25 +6,25 @@ import axiosInstance from '../../axios';
 
 function SignupForm({Signup, error}){
 
-    const initialFormData = Object.freeze({
-        email: '',
-        username: '',
-        password:'',
-    })
+    // const initialFormData = Object.freeze({
+    //     email: '',
+    //     username: '',
+    //     password:'',
+    // })
 
-    //const [details, setDetails] = useState({username: "", email: "", password: ""});
-    const [details, setDetails] = useState(initialFormData)
+    const [details, setDetails] = useState({username: "", email: "", password: ""});
+    //const [details, setDetails] = useState(initialFormData)
     const [repeatPassword, setRepeatPassword] = useState("");
     const [passwordShown1, setPasswordShown1] = useState(false);
     const [passwordShown2, setPasswordShown2] = useState(false)
 
-    const handleChange = (e) =>{
-        setDetails({
-            ...details,
-            //trimming whitespace
-            [e.target.name]: e.target.value.trim(),
-        })
-    }
+    // const handleChange = (e) =>{
+    //     setDetails({
+    //         ...details,
+    //         //trimming whitespace
+    //         [e.target.name]: e.target.value.trim(),
+    //     })
+    // }
     
     const submitHandler = e => {
         e.preventDefault();
@@ -46,22 +46,22 @@ function SignupForm({Signup, error}){
                 <h2> Create an account </h2>
                 <div className = "form-group">
                     <input type="email" name= "email" id ="email"
-                    //onChange = {e => setDetails({...details, email: e.target.value})}
-                    onChange = {handleChange}
+                    onChange = {e => setDetails({...details, email: e.target.value.trim()})}
+                    //onChange = {handleChange}
                     placeholder="Email*"> 
                     </input>
                 </div>
                 <div className = "form-group">
                     <input type="text" name="username" id = "username"
-                    //onChange = {e => setDetails({...details, username: e.target.value})}
-                    onChange = {handleChange}
+                    onChange = {e => setDetails({...details, username: e.target.value.trim()})}
+                    //onChange = {handleChange}
                     placeholder = "Username*"></input>
                 </div>
             
                 <div className = "form-group-pwd">
                     <input type= {passwordShown1 ? "text" : "password"}  name="password" id = "password"
-                    //onChange = {e => {setDetails({...details, password: e.target.value})}}
-                    onChange={handleChange}
+                    onChange = {e => {setDetails({...details, password: e.target.value.trim()})}}
+                    //onChange={handleChange}
                     placeholder = "Password*"
                     className = "input-pwd">
                     </input>

@@ -45,6 +45,7 @@ export function SignUpScreen(){
                         setError('This email already exists. Please try again!')
                     } else{
                         console.err(err)
+                        console.log(err.data)
                 }
             })
     }}

@@ -1,8 +1,8 @@
 import React from 'react'
-
+import "./Home.css"
 export function Home() {
   return (
-    <div>
+    <div className = "home-wrapper">
         <h2>HELLO</h2>
         <p>Cras facilisis urna ornare ex volutpat, et
         convallis erat elementum. Ut aliquam, ipsum vitae

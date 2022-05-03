@@ -27,7 +27,7 @@ export function LogInScreen(){
                   console.log('Logged in');
             }).catch((err) =>{
               if (err.response.data.detail === 'No active account found with the given credentials'){
-                setError('Invalid username or password. Please try again!')
+                setError('Invalid username or password. Please try again')
               }
             })
      

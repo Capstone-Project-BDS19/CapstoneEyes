@@ -79,7 +79,7 @@ function SignupForm({Signup, error}){
                 {(error != "") ? (<div className = "error"> {error} </div>): ""}
                 </div>
                 <div className = "form-group-center">
-                    <input type = "submit" value = "Create your account"/>
+                    <input type = "submit" value = "Create your account" id ='btn-click'/>
                 </div>
             </div>
         </form>

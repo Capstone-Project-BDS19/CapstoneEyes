@@ -13,7 +13,7 @@ export function SignUpScreen(){
   const [error, setError] = useState("");
   
   const Signup = (details, repeatPassword) => {
-      console.log(details);
+      console.log(details.email);
       if ((details.email === '') || (details.username === '') || (details.password === '')){
         setError('Please fill in the required details')
       }
@@ -21,11 +21,8 @@ export function SignUpScreen(){
         if (details.password !== repeatPassword){
                 console.log("unmatched password")
                 setError("Unmatched password. Please try again!")
-            //   setUser({
-            //       username: details.username,
-            //       email: details.email,
-            //       password: details.password
-            //   })
+        } else if (details.password.length <8){
+            setError("The password must contain at least 8 characters")
         } else {
                 console.log("Matched password");
                 axiosInstance
@@ -34,19 +31,22 @@ export function SignUpScreen(){
                         user_name: details.username,
                         password: details.password,
                     }) 
+
                     .then((res) => {
                         history('/login')
-                        console.log(res.data)
+                        console.log('Logged in')
                         console.log(res)
-                }).catch((err) => {
-                    if (err.response.data[0] === 'This username already exists'){
-                        setError('This username already exists. Please try again!')
-                    } else if (err.response.status === 500){
-                        setError('This email already exists. Please try again!')
-                    } else{
-                        console.err(err)
-                }
-            })
+                        console.log(res.data)
+                    }).catch((err) => {
+                        console.log(err)
+                        if (err.response.data.non_field_errors[0] === 'This email already exists'){
+                            setError('This email already exists. Please try again!')
+                        } else if (err.response.data.non_field_errors[0] === 'This username already exists'){
+                            setError('This username already exists. Please try again!')
+                        } else{
+                            console.error(err)
+                // }
+            }})
     }}
   }
 

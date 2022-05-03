@@ -62,7 +62,7 @@ function LoginForm({Login, error}){
                 {(error != "") ? (<div className = "error">{error}</div>) :  ""}
                 </div>
                <div className = "form-group-center"> 
-                    <input type= "submit" value = "Login"
+                    <input type= "submit" value = "Login" id = "btn-login"
                     onClick = {handleSubmit}/>
                 </div>
                 

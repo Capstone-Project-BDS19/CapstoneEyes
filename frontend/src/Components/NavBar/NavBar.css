@@ -1,0 +1,111 @@
+.navbar-wrapper{
+    position:fixed;
+    top: 0;
+    width: 100% 
+}
+.navbar{
+    background-color: #0e1908;
+    display: grid;
+    grid-template-columns: repeat(3, auto) ;
+    height: 80px;
+    align-items: center;
+    position: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.navbar .project-name{
+    width: fit-content;
+}
+
+.navbar .project-name .prj-title{
+    color:#f5f5f5;
+    font-size: 175%;
+    font-weight: bolder;
+    align-items: center;
+    height: 100%;
+    padding-left: 60px;
+
+} 
+
+.navbar .login-signup{
+    width: fit-content;
+    margin-right: 3rem
+
+}
+
+.navbar .login-signup a{
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 18px;
+    padding: 0 10px;
+    align-items: center;
+    height: 100%;
+    width: fit-content
+}
+
+.menu-bars{
+    margin-left: 2.5rem;
+    font-size: 2rem;
+    background: none;
+}
+
+.nav-menu{
+    background-color: #0e1908;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+}
+
+
+.nav-menu.active{
+    left: 0;
+    transition: 350ms;
+}
+
+.nav-text{
+    display: flex;
+    justify-self: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-text a{
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+}
+
+.nav-text a:hover{
+    background-color: #809b78;
+}
+
+.nav-menu-items{
+    width: 100%;
+}
+
+.navbar-toggle{
+    background-color: #0e1908;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+span{
+    margin-left: 16px;
+}

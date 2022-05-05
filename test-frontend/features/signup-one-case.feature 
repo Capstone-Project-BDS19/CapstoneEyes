@@ -1,0 +1,20 @@
+Feature: Capstone System Sign-Up Form
+
+    Background: Open signup screen
+        Given Launch Chrome browser for signup
+        When Open system homepage for signup
+        And User clicks the Signup button 
+    
+
+    
+    Scenario Outline: User signs up using an existing email
+        When Enter signup credentials email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+        And Click on Create your account button
+        Then User shall receive an error message notifying them email id must be unique 
+
+        Examples:
+            | email                   | username         | password     | repeatPassword  |
+            | nhilai1105@gmail.com    | nhilai00         | Straykids123 | Straykids123    | 
+
+    
+    

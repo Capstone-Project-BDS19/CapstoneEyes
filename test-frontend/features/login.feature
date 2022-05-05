@@ -10,17 +10,29 @@ Feature: Capstone System Log-In Form
         Then User shall be redirected to signup screen
     
     Scenario Outline: User logs in with valid credentials
+<<<<<<< Updated upstream
         When Enter email "<email>", password "<password>"
+=======
+        When Enter login credentials email "<email>", password "<password>"
+>>>>>>> Stashed changes
         And Click on Login button
         Then User shall be redirected to the Homepage
 
         Examples:
             | email                 | password     |
+<<<<<<< Updated upstream
             | nhilai1105@gmail.com  | yennhi12345  | 
 
 
     Scenario Outline: User logs in with unregistered email id
         When Enter email "<email_login>", password "<password_login>"
+=======
+            | nhilai1105@gmail.com  | yennhi1105   | 
+
+
+    Scenario Outline: User logs in with unregistered email id
+        When Enter login credentials email "<email>", password "<password>"
+>>>>>>> Stashed changes
         And Click on Login button
         Then User shall receive an error message notifying the email has not been registered
 
@@ -30,7 +42,11 @@ Feature: Capstone System Log-In Form
 
 
     Scenario Outline: User logs in with incorrect password
+<<<<<<< Updated upstream
         When Enter email "<email>", password "<password>"
+=======
+        When Enter login credentials email "<email>", password "<password>"
+>>>>>>> Stashed changes
         And Click on Login button
         Then User shall receive an error message notifying the password is incorrect
 
@@ -40,9 +56,15 @@ Feature: Capstone System Log-In Form
 
 
     Scenario Outline: User leaves blanks when logging in
+<<<<<<< Updated upstream
         When Enter email "<email>", password "<password>"
         And Click on Login button
         Then User shall receive an error message notifying them they must fill in required details
+=======
+        When Enter login credentials email "<email>", password "<password>"
+        And Click on Login button
+        Then User shall receive an error message notifying them they must fill in required details in login form
+>>>>>>> Stashed changes
 
         Examples:
             | email                 | password |

@@ -22,8 +22,12 @@ def click_signup(context):
     context.driver.find_element_by_class_name("signup").click()
 
 
+<<<<<<< Updated upstream
 
 @when('Enter email "{email}", username "{username}", password "{password}", and repeatPassword "{repeatPassword}"')
+=======
+@when('Enter signup credentials email "{email}", username "{username}", password "{password}", and repeatPassword "{repeatPassword}"')
+>>>>>>> Stashed changes
 def fill_signup_form(context, email, username, password, repeatPassword):
     para = [email, username, password, repeatPassword]
 
@@ -43,7 +47,11 @@ def fill_signup_form(context, email, username, password, repeatPassword):
 def click_create_acc(context):
     context.driver.find_element_by_id("btn-click").click()
 
+<<<<<<< Updated upstream
 
+=======
+"""
+>>>>>>> Stashed changes
 @then('User shall be redirected to the Login page')
 def check_login_page(context):
     time.sleep(3)
@@ -51,6 +59,11 @@ def check_login_page(context):
         assert True, "Test Passed"
     else:
         assert False, "Test Failed"
+<<<<<<< Updated upstream
+=======
+"""
+
+>>>>>>> Stashed changes
 
 @then('User shall receive an error message notifying them email id must be unique')
 def check_email(context):
@@ -61,7 +74,11 @@ def check_email(context):
     else:
         assert False, "Test Failed"
 
+<<<<<<< Updated upstream
 
+=======
+"""
+>>>>>>> Stashed changes
 @then('User shall receive an error message notifying them username must be unique')
 def check_username(context):
     time.sleep(3)
@@ -90,11 +107,22 @@ def check_pw_length(context):
     else:
         assert False, "Test Failed"
 
+<<<<<<< Updated upstream
 @then('User shall receive an error message notifying them they must fill in required details')
+=======
+@then('User shall receive an error message notifying them they must fill in required details in signup form')
+>>>>>>> Stashed changes
 def check_blank(context):
     time.sleep(3)
     error = context.driver.find_element_by_class_name("error")
     if error.text == "Please fill in the required details":
         assert True, "Test Passed"
     else:
+<<<<<<< Updated upstream
         assert False, "Test Failed"
+=======
+        assert False, "Test Failed"
+
+
+        """
+>>>>>>> Stashed changes

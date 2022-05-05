@@ -26,16 +26,26 @@ def register_now(context):
     time.sleep(3)
     context.driver.find_element_by_id("reg-now").click()
 
+<<<<<<< Updated upstream
 @when('Enter email "{email_login}", password "{password_login}"')
 def fill_login_form(context, email_login, password_login):
     para = [email_login, password_login]
+=======
+@when('Enter login credentials email "{email}", password "{password}"')
+def fill_login_form(context, email, password):
+    para = [email, password]
+>>>>>>> Stashed changes
 
     exclude_value = []
     for element in para:
         if element == '""':
             exclude_value.append(element)
 
+<<<<<<< Updated upstream
     name_form = {email_login: 'email', password_login:'password'}
+=======
+    name_form = {email: 'email', password:'password'}
+>>>>>>> Stashed changes
     
     for i in name_form:
         if i not in exclude_value:
@@ -66,7 +76,11 @@ def check_homepage(context):
 def invalid_email(context):
     time.sleep(3)
     error = context.driver.find_element_by_class_name("error")
+<<<<<<< Updated upstream
     if error.text == "Ivalid username or password. Please try again":
+=======
+    if error.text == "Invalid username or password. Please try again":
+>>>>>>> Stashed changes
         assert True, "Test Passed"
     else:
         assert False, "Test Failed"
@@ -75,12 +89,20 @@ def invalid_email(context):
 def invalid_pw(context):
     time.sleep(3)
     error = context.driver.find_element_by_class_name("error")
+<<<<<<< Updated upstream
     if error.text == "Ivalid username or password. Please try again":
+=======
+    if error.text == "Invalid username or password. Please try again":
+>>>>>>> Stashed changes
         assert True, "Test Passed"
     else:
         assert False, "Test Failed"
 
+<<<<<<< Updated upstream
 @then('User shall receive an error message notifying them they must fill in required details')
+=======
+@then('User shall receive an error message notifying them they must fill in required details in login form')
+>>>>>>> Stashed changes
 def fill_blank(context):
     time.sleep(3)
     error = context.driver.find_element_by_class_name("error")

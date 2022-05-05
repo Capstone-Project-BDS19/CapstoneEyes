@@ -32,9 +32,14 @@ export function LogInScreen(){
               else{
                 if ((details.email === "") || (details.password === "")){
                   setError('Please fill in the required details')
+<<<<<<< Updated upstream
                 }
                             }
             })
+=======
+                } }
+              })
+>>>>>>> Stashed changes
      
       // else {
       //   console.log("Incorrect credentials. Please try again!")

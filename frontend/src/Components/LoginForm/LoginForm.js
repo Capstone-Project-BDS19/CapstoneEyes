@@ -68,7 +68,11 @@ function LoginForm({Login, error}){
                 
                 <div className = "form-group-center">
                     <p> Don't have an account? </p>
+<<<<<<< Updated upstream
                     <Link to = "/signup" id= "reg-now"> Register now </Link>
+=======
+                    <Link to = "/signup" id='reg-now'> Register now </Link>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </form>

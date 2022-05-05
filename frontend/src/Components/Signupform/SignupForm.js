@@ -68,7 +68,11 @@ function SignupForm({Signup, error}){
                     <AiIcons.AiOutlineEye className = "pwd-button" onClick = {togglePassword1} />
                 </div>
                 <div className = "form-group-pwd">
+<<<<<<< Updated upstream
                     <input type= {passwordShown2 ? "text" : "password"} name="repeatpassword" id = "repeatpassword"
+=======
+                    <input type= {passwordShown2 ? "text" : "password"} name='repeatpassword'
+>>>>>>> Stashed changes
                     placeholder = "Repeat Password*"
                     className = "input-pwd"
                     onChange = {e => {setRepeatPassword(e.target.value)}}>

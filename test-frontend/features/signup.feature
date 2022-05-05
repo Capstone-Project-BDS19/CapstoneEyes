@@ -7,11 +7,16 @@ Feature: Capstone System Sign-Up Form
     
 
     Scenario Outline: User clicks create your account with valid credentials
+<<<<<<< Updated upstream
         When Enter email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+=======
+        When Enter signup credentials email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+>>>>>>> Stashed changes
         And Click on Create your account button
         Then User shall be redirected to the Login page
 
         Examples:
+<<<<<<< Updated upstream
             | email                 | username           | password     | repeatPassword  |
             | straykids@jyp.com     | straykids250318    | Straykids123 | Straykids123    | 
         
@@ -22,16 +27,36 @@ Feature: Capstone System Sign-Up Form
     
     Scenario Outline: User signs up using an existing email
         When Enter email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+=======
+            | email                        | username           | password     | repeatPassword  |
+            | straykids@jyp.com            | straykids250318    | Straykids123 | Straykids123    | 
+        
+        Examples:
+            | email                        | username           | password     | repeatPassword  |
+            | capstoneproject11@spj.org    | capstone11         | fighting123  | fighting123     | 
+
+    
+    Scenario Outline: User signs up using an existing email
+        When Enter signup credentials email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+>>>>>>> Stashed changes
         And Click on Create your account button
         Then User shall receive an error message notifying them email id must be unique 
 
         Examples:
             | email                   | username         | password     | repeatPassword  |
+<<<<<<< Updated upstream
             | nhilai1105@gmail.com    | nhilai0000       | Straykids123 | Straykids123    | 
 
     
     Scenario Outline: User signs up using an existing username
         When Enter email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+=======
+            | nhilai1105@gmail.com    | nhilai00         | Straykids123 | Straykids123    | 
+
+    
+    Scenario Outline: User signs up using an existing username
+        When Enter signup credentials email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+>>>>>>> Stashed changes
         And Click on Create your account button
         Then User shall receive an error message notifying them username must be unique 
 
@@ -41,7 +66,11 @@ Feature: Capstone System Sign-Up Form
 
     
     Scenario Outline: User signs up but repeating password incorrectly
+<<<<<<< Updated upstream
         When Enter email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+=======
+        When Enter signup credentials email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+>>>>>>> Stashed changes
         And Click on Create your account button
         Then User shall receive an error message notifying them they repeated password incorrectly
 
@@ -51,7 +80,11 @@ Feature: Capstone System Sign-Up Form
 
 
     Scenario Outline: User signs up but using short password
+<<<<<<< Updated upstream
         When Enter email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+=======
+        When Enter signup credentials email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+>>>>>>> Stashed changes
         And Click on Create your account button
         Then User shall receive an error message notifying them they password must have at least 8 characters
 
@@ -61,6 +94,7 @@ Feature: Capstone System Sign-Up Form
 
 
     Scenario Outline: User leaves blanks when signing up
+<<<<<<< Updated upstream
         When Enter email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
         And Click on Create your account button
         Then User shall receive an error message notifying them they must fill in required details
@@ -80,6 +114,27 @@ Feature: Capstone System Sign-Up Form
         Examples:
             | email                | username   | password  | repeatPassword  |
             | nhilai0212@gmail.com | nhilai2003 | skz123    | ""              | 
+=======
+        When Enter signup credentials email "<email>", username "<username>", password "<password>", and repeatPassword "<repeatPassword>"
+        And Click on Create your account button
+        Then User shall receive an error message notifying them they must fill in required details in signup form
+
+        Examples:
+            | email                 | username    | password  | repeatPassword  |
+            | ""                    | nhilai2003  | skz123    | skz123          | 
+
+        Examples:
+            | email                 | username    | password  | repeatPassword  |
+            | nhilai0212@gmail.com  | ""          | skz123    | skz123          | 
+
+        Examples:
+            | email                 | username    | password  | repeatPassword  |
+            | nhilai0212@gmail.com  | nhilai2003  | ""        | skz123          | 
+
+        Examples:
+            | email                 | username    | password  | repeatPassword  |
+            | nhilai0212@gmail.com  | nhilai2003  | skz123    | ""              | 
+>>>>>>> Stashed changes
 
         
         

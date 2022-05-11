@@ -28,6 +28,10 @@ export function LogInScreen(){
             }).catch((err) =>{
               if (err.response.data.detail === 'No active account found with the given credentials'){
                 setError('Invalid username or password. Please try again')
+              } else {
+                if ((details.email ==="") || (details.password === "")){
+                  setError("Please fill in the required details")
+                }
               }
             })
      

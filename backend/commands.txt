@@ -7,4 +7,4 @@ pip install djangorestframework - allow to convert a django application
 to a set of restful API
 pip install django-cors-headers
 pip install djangorestframework-simplejwt
-
+pip install opencv-python

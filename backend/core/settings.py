@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'capstone_api',
     'rest_framework',
     'corsheaders',
-    'users'
+    'users',
+    'blink_model'
 ]
 
 MIDDLEWARE = [

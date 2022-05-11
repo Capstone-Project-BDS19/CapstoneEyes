@@ -1,0 +1,39 @@
+#contact .contact {
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color:snow;
+    
+}
+
+#contact .section-title {
+
+    padding-top: 30px;
+    text-align: center;
+    font-size: 30px;
+    color: green;
+}
+#contact .feature-text {
+    text-align: center;
+    font-size: 20px;
+}
+
+#contact .contact-items {
+    width: 80%;
+    padding-left:80px;
+    
+}
+
+#contact .contact-item{
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 18px 0 #0000002c;
+
+}

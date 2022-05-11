@@ -13,4 +13,6 @@ urlpatterns = [
     path('api/user/', include('users.urls', namespace = 'users')), #need test
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    #path('api/model/', include('blink_model.urls', namespace= 'blink_model'))
+    
 ]

@@ -71,6 +71,8 @@ function SignupForm({Signup, error}){
                     <input type= {passwordShown2 ? "text" : "password"} 
                     placeholder = "Repeat Password*"
                     className = "input-pwd"
+                    name="repeatpassword"
+                    id="repeatpassword"
                     onChange = {e => {setRepeatPassword(e.target.value)}}>
                     </input>
                     <AiIcons.AiOutlineEye className = "pwd-button" onClick = {togglePassword2} />

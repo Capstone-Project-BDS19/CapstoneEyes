@@ -68,7 +68,7 @@ function LoginForm({Login, error}){
                 
                 <div className = "form-group-center">
                     <p> Don't have an account? </p>
-                    <Link to = "/signup"> Register now </Link>
+                    <Link to = "/signup" id='reg-now'> Register now </Link>
                 </div>
             </div>
         </form>
